@@ -39,6 +39,59 @@
 
   <link rel="stylesheet" type="text/css" href="style-mobile.25fc5.css"/>
   <link rel="icon" href="favicon.8de18.ico"/>
+
+
+  <script 
+    async 
+    src="https://tganalytics.xyz/index.js" 
+    onload="initAnalytics()" 
+    type="text/javascript"
+  ></script>
+  <script>
+      function initAnalytics() {
+          // console.log("✅ Telegram Analytics SDK 已加载");
+          // window.telegramAnalytics.init({
+          //     token: 'eyJhcHBfbmFtZSI6IkRhZ291U29rb2JhbiIsImFwcF91cmwiOiJodHRwczovL3QubWUvQmVzdE9ubGluZUdhbWVCb3QiLCJhcHBfZG9tYWluIjoiaHR0cHM6Ly9saXBhbjQ3Ni5naXRodWIuaW8vU29rb2JhbkdhbWUvIn0=!rTMu+CulbxbCCsqYSoyqtivjzv4BX5bLay3NbYHVMug=', // 这里填入 "Your token for recording"
+          //     appName: 'SokobanGame', // 你的游戏名称
+          // });
+
+          if (window.telegramAnalytics) {
+            console.log("✅ Telegram Analytics SDK 已加载");
+            window.telegramAnalytics.init({
+                token: 'eyJhcHBfbmFtZSI6IlNvbGl0YWlyZSIsImFwcF91cmwiOiJodHRwczovL3QubWUvU29saXRhaXJlTWFzdGVyQm90IiwiYXBwX2RvbWFpbiI6Imh0dHBzOi8vbGlwYW40NzYuZ2l0aHViLmlvL3poaXBhaWppZWxvbmcvIn0=!pGIEUjDMX6Qp3B4weXEoGO+GKJkWjNq2uOh1Yn27trk=', // 这里填入 "Your token for recording"
+                appName: 'Solitaire', // 你的游戏名称
+            });
+        } else {
+            console.error("❌ Telegram Analytics SDK 未加载！");
+        }
+      }
+  </script>
+  
+  
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    if (window.Telegram?.WebApp) {
+      const tg = Telegram.WebApp;
+      tg.expand(); // 强制全屏显示
+      tg.enableClosingConfirmation(); // 防止误关闭
+      //console.log("User:", tg.initDataUnsafe.user?.id); // 获取用户信息
+
+      // 添加返回按钮
+      const backBtn = document.createElement('button');
+      backBtn.textContent = 'Back to Bot';
+      backBtn.style.position = 'fixed';
+      backBtn.style.top = '10px';
+      backBtn.style.left = '10px';
+      backBtn.style.zIndex = 9999;
+      backBtn.onclick = () => tg.close();
+      document.body.appendChild(backBtn);
+    } else {
+      alert("Please open this game inside Telegram!");
+    }
+  </script>
+
+
 </head>
 <body>
   <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
